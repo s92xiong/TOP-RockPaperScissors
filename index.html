@@ -1,0 +1,105 @@
+<script>
+    // Keep record of score and round
+    let userPoints = 0;
+    let pcPoints = 0;
+    let gameRound = 0;
+
+    // PC randomly picks rock, paper, or scissors
+    function computerPlay() {
+        const n = Math.floor(Math.random() * 3) + 1;
+        if (n === 3) {
+            return "rock";
+        } else if (n === 2) {
+            return "paper";
+        } else {
+            return "scissors";
+        }
+    }
+
+    // Prompt user for string: rock, paper, or scissors
+    function userPlay() {
+        const choice = prompt("Choose rock, paper, or scissors:");        
+        // If press cancel or esc key, show no message
+        if (choice === null) {
+          return null;
+        }
+        // Convert string to lowercase
+        const result = choice.toLowerCase();
+        // Protect against string typo
+        if (result === "rock" || result === "paper" || result === "scissors") {
+            return result;
+        } else {
+          userPlay();
+        }
+    }
+
+    function playRound(playerSelection, computerSelection) {
+        // Potential outcomes if user selects ROCK
+        if (playerSelection === "rock") {
+            if (computerSelection === "paper") {
+                console.log("You lose, paper beats rock!");
+                pcPoints++;
+            } else if (computerSelection === "rock") {
+                console.log("Tie!");
+            } else {
+                console.log("You win, rock beats scissors!");
+                userPoints++;
+            }
+        }
+
+        // Potential outcomes if user selects PAPER
+        if (playerSelection === "paper") {
+            if (computerSelection === "scissors") {
+                console.log("You lose, scissors beats paper!");
+                pcPoints++;
+            } else if (computerSelection === "paper") {
+                console.log("Tie!");
+            } else {
+                console.log("You win, paper beats rock!");
+                userPoints++;
+            }
+        }
+
+        // Potential outcomes if user selects SCISSORS
+        if (playerSelection === "scissors") {
+            if (computerSelection === "rock") {
+                console.log("You lose, rock beats scissors!");
+                pcPoints++;
+            } else if (computerSelection === "scissors") {
+                console.log("Tie!");
+            } else {
+                console.log("You win, scissors beats paper!");
+                userPoints++;
+            }
+        }
+    }
+
+    function game() {
+        // Run function, increment round, and show current score
+        playRound(userPlay(), computerPlay());
+        gameRound++;
+        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
+        playRound(userPlay(), computerPlay());
+        gameRound++;
+        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
+        playRound(userPlay(), computerPlay());
+        gameRound++;
+        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
+        playRound(userPlay(), computerPlay());
+        gameRound++;
+        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
+        playRound(userPlay(), computerPlay());
+        gameRound++;
+        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
+        
+        // Determine who wins
+        if (userPoints > pcPoints) {
+            console.log("User wins!");
+        } else if (userPoints === pcPoints) {
+            console.log("The game is a tie!");
+        } else {   
+            console.log("PC wins!");
+        }
+    }
+    game();
+</script>

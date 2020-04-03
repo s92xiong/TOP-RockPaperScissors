@@ -1,5 +1,5 @@
 <script>
-    // Keep record of score and round
+    // Record score and round
     let userPoints = 0;
     let pcPoints = 0;
     let gameRound = 0;
@@ -74,25 +74,14 @@
         }
     }
 
-    function game() {
-        // Run function, increment round, and show current score
-        playRound(userPlay(), computerPlay());
-        gameRound++;
-        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
-        playRound(userPlay(), computerPlay());
-        gameRound++;
-        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
-        playRound(userPlay(), computerPlay());
-        gameRound++;
-        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
-        playRound(userPlay(), computerPlay());
-        gameRound++;
-        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
-        playRound(userPlay(), computerPlay());
-        gameRound++;
-        console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
-        
-        // Determine who wins
+    function game(n) {
+        // Play game, increment round, show current score
+        for (let i = 0; i < n; i++){
+            playRound(userPlay(), computerPlay());
+            gameRound++;
+            console.log(`Round ${gameRound}, Score: User = ${userPoints} & PC = ${pcPoints}`);
+        }
+        // Determine winner
         if (userPoints > pcPoints) {
             console.log("User wins!");
         } else if (userPoints === pcPoints) {
@@ -101,5 +90,5 @@
             console.log("PC wins!");
         }
     }
-    game();
+    game(5);
 </script>

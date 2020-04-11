@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(112, 112, 112);
+}
+
+#buttonContainer {
+    text-align: center;
+    padding-top: 180px;
+    padding-bottom: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+#resultContainer {
+    text-align: center;
+    width: 250px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: auto;
+    background: rgb(73, 73, 73);
+    border: 5px solid rgb(144, 117, 241);
+    color: rgb(199, 199, 199);
+}
